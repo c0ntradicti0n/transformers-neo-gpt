@@ -4,4 +4,5 @@ generator = pipeline('text-generation', model='EleutherAI/gpt-neo-125M')
 
 
 def f(intent=None, **other_kwargs):
-    print(generator(intent, do_sample=True, min_length=50))
+    text = "".join(intent.split()[:10])
+    print(generator(text, do_sample=True, min_length=50))
