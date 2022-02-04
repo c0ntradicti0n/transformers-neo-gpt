@@ -7,7 +7,8 @@ generator = pipeline('text-generation', model=model_name)
 
 def f(intent=None, userinput=None, **other_kwargs):
     string = userinput if userinput else intent
-    text = "".join(string.split()[:10])
+    text = "".join(string.split()[:10]).replace('"', '').replace("[", '').replace("]", '')
+    print ("text" + string + text)
     output = (generator(text, do_sample=True, min_length=50))
     print (f"Made this new idea {output}")
     return {
