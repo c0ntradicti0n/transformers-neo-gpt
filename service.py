@@ -1,6 +1,8 @@
 from transformers import pipeline
+import os
 
-generator = pipeline('text-generation', model='EleutherAI/gpt-neo-125M')
+model_name = os.environ["model_name"] if "model_name" in os.environ else 'EleutherAI/gpt-neo-125M'
+generator = pipeline('text-generation', model=model_name)
 
 
 def f(intent=None, **other_kwargs):
