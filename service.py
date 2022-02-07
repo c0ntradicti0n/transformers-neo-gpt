@@ -9,7 +9,7 @@ def f(intent=None, userinput=None, **other_kwargs):
     string = userinput if userinput else intent
     text = " ".join(string.split()[:10]).replace('"', '').replace("[", '').replace("]", '')
     print ("text" + string + text)
-    output = (generator(text, do_sample=True, min_length=length))
+    output = (generator(text, do_sample=True, min_length=length, max_length=length))
     print (f"Made this new idea {output}")
     return {
         "idea": output
