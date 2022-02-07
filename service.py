@@ -3,7 +3,7 @@ import os
 
 model_name = os.environ["model_name"] if "model_name" in os.environ else 'EleutherAI/gpt-neo-125M'
 generator = pipeline('text-generation', model=model_name)
-length = os.environ["length"] if "length" in os.environ else 150
+length = int(os.environ["length"]) if "length" in os.environ else 150
 
 def f(intent=None, userinput=None, **other_kwargs):
     string = userinput if userinput else intent
